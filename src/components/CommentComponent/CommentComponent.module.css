@@ -1,0 +1,31 @@
+.box{
+    width: 350px;
+    height: 300px;
+    border: 1px solid rgb(3, 157, 3);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0 0 20px 0;
+}
+.button{
+    width: 150px;
+    height: 35px;
+    background-color: #9718f2;
+    font-size: 14px;
+    border: none;
+    border-radius: 15px;
+    margin: 20px 0;
+}
+.post{
+position: fixed;
+top: 200px;
+left: 700px;
+width: 400px;
+height: 100px;
+padding: 20px;
+border: 2px solid #9718f2;
+border-radius: 8px;
+text-align: center;
+font-size: 15px;
+font-family: monospace;
+
+}
