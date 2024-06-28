@@ -1,15 +1,16 @@
 import styles from './AlbumsComponent.module.css'
-import { useEffect, useState } from 'react';
-import { AlbumService } from '../../services/apiService'; 
+import { useEffect } from 'react';
+import { getAlbumsThunk } from '../../redux/action/userAction';
 import { useDispatch, useSelector } from 'react-redux';
 
 const AlbumsComponent = () => {
-    // const [albums,  setAlbums] = useState([]);
     const albums = useSelector( (store) => store.albumReducer.albums);
     const dispatch = useDispatch();
-
-  useEffect(() => {
-    AlbumService.getAlbums(dispatch);
+    const getAlbums = () => dispatch(getAlbumsThunk())
+ 
+ 
+    useEffect(() => {
+    getAlbums()
 }, []);
 
 return(

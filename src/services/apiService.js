@@ -37,3 +37,16 @@ export const CommentService = {
         }
     },
 };
+
+export const PostService = {
+    getPost: async ( postId )  => {
+        try { 
+        let response = await axios.get(`${API_URL}/posts/${postId}`);
+        return response.data;
+        }
+        catch (error) {
+            console.error('Error fetching comments:', error);
+            throw error;
+        }
+    },
+};

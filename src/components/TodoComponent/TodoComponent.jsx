@@ -1,17 +1,16 @@
 import styles from './TodosComponent.module.css'
-import { useEffect, useState } from 'react';
-import { TodoService } from '../../services/apiService';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getTodoThunk } from '../../redux/action/userAction';
 
 
 const TodosComponent = () => {
-    // const [todos,  setTodos] = useState([]);
     const todos = useSelector( (store) => store.todoReducer.todos);
-
+    const getTodos = () => dispatch(getTodoThunk())
     const dispatch = useDispatch();
 
     useEffect(() => {
-    TodoService.getTodos(dispatch);
+    getTodos()
     }, []);
 return(
     <div>
