@@ -2,12 +2,14 @@ import styles from './TodosComponent.module.css'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTodoThunk } from '../../redux/action/userAction';
+import { AppDispatch, AppStateType } from '../../redux/store';
+import { Todo } from '../../redux/reducers/todoReducer';
 
 
 const TodosComponent = () => {
-    const todos = useSelector( (store) => store.todoReducer.todos);
+    const todos = useSelector( (store:AppStateType): Todo[] | [] => store.todoReducer.todos);
     const getTodos = () => dispatch(getTodoThunk())
-    const dispatch = useDispatch();
+    const dispatch: AppDispatch = useDispatch();
 
     useEffect(() => {
     getTodos()

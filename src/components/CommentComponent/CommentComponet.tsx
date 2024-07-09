@@ -2,15 +2,18 @@ import styles from './CommentComponent.module.css';
 import { useEffect } from 'react';
 import { getCommentsThunk, getPostThunk } from '../../redux/action/userAction';
 import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, AppStateType } from '../../redux/store';
+import { Post } from '../../redux/reducers/postReducer';
+import { Comment } from '../../redux/reducers/commentReducer';
 
 const CommentComponent = () => {
 
-    const comments = useSelector( (store) => store.commentReducer.comments);
-    const post = useSelector( (store) => store.postReducer.post);
+    const comments: Comment[] | [] = useSelector( (store:AppStateType) => store.commentReducer.comments);
+    const post: Post | undefined = useSelector( (store:AppStateType) => store.postReducer.post);
     
-    const dispatch = useDispatch();
+    const dispatch: AppDispatch = useDispatch();
     const getComments = () => dispatch(getCommentsThunk())
-    const getPostById = (postId) => { dispatch (getPostThunk(postId))}
+    const getPostById = (postId: number)=> { dispatch (getPostThunk(postId))}
 
     useEffect(() => {
       getComments()

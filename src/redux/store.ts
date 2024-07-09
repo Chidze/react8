@@ -17,6 +17,9 @@ const composeEnchancers = composeWithDevToolsDevelopmentOnly({
     traceLimit: 25
 })
 
-const store = createStore (rootReducer, composeEnchancers(applyMiddleware(thunk)));
+const store: any = createStore (rootReducer, composeEnchancers(applyMiddleware(thunk)));
+
+export type AppStateType = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 
 export default store;

@@ -1,9 +1,9 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import Header from "../components/Header/Header";
+import Header from "../components/Header/Header.tsx";
 import { AppRoutes } from "./AppRoutes";
-import TodosComponent from "../components/TodoComponent/TodoComponent";
-import CommentComponent from "../components/CommentComponent/CommentComponet";
-import AlbumsComponent from "../components/AlbumsComponent/AlbumsComponent";
+import TodosComponent from "../components/TodoComponent/TodoComponent.tsx";
+import CommentComponent from "../components/CommentComponent/CommentComponet.tsx";
+import AlbumsComponent from "../components/AlbumsComponent/AlbumsComponent.tsx";
 
 
 const AppLayout = () => (

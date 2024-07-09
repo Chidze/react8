@@ -1,10 +1,11 @@
 import axios from "axios";
 import { userActions } from "../redux/action/userAction";
+import { AppDispatch } from "../redux/store";
 const API_URL = 'https://jsonplaceholder.typicode.com';
 
 
 export const AlbumService = {
-        getAlbums: async (dispatch) => {
+        getAlbums: async (dispatch: AppDispatch) => {
             try {
                 let response = await axios.get(`${API_URL}/albums`);
                 dispatch(userActions.setAlbums(response.data))
@@ -16,7 +17,7 @@ export const AlbumService = {
     };
 
 export const TodoService = {
-    getTodos: async (dispatch) => {
+    getTodos: async (dispatch: AppDispatch) => {
         try {
             let response = await axios.get(`${API_URL}/todos`);
             dispatch(userActions.setTodos(response.data))
@@ -27,7 +28,7 @@ export const TodoService = {
     },
 };
 export const CommentService = {
-    getComments: async (dispatch) => {
+    getComments: async (dispatch: AppDispatch) => {
         try {
             let response = await axios.get(`${API_URL}/comments`);
             dispatch(userActions.setComments(response.data))
@@ -39,7 +40,7 @@ export const CommentService = {
 };
 
 export const PostService = {
-    getPost: async ( postId )  => {
+    getPost: async ( postId: number)  => {
         try { 
         let response = await axios.get(`${API_URL}/posts/${postId}`);
         return response.data;
