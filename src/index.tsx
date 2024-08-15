@@ -1,10 +1,9 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { RouterProvider } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import { router } from './Routing/router';
-import store from './redux/store';
+import  { store }from './redux/reduxTK/store';
 import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);

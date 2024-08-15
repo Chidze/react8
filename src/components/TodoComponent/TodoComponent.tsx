@@ -1,23 +1,23 @@
 import styles from './TodosComponent.module.css'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTodoThunk } from '../../redux/action/userAction';
-import { AppDispatch, AppStateType } from '../../redux/store';
-import { Todo } from '../../redux/reducers/todoReducer';
+import { AppDispatch, AppStateType } from '../../redux/reduxTK/store';
+import { getTodosThunkRTK, TodoRTK } from '../../redux/reduxTK/slices/todoSlice';
 
 
 const TodosComponent = () => {
-    const todos = useSelector( (store:AppStateType): Todo[] | [] => store.todoReducer.todos);
-    const getTodos = () => dispatch(getTodoThunk())
-    const dispatch: AppDispatch = useDispatch();
+    const todos = useSelector((store: AppStateType) => store.todoReducer.todos);
+    const dispatch = useDispatch<AppDispatch>();
+ 
 
     useEffect(() => {
-    getTodos()
-    }, []);
+        dispatch(getTodosThunkRTK());
+    }, [dispatch]);
+
 return(
     <div>
         <ol>  
-    {todos?.map((todo) =>(
+    {todos?.map((todo: TodoRTK) =>(
     <li key={todo.id} className = {styles.box}>
     <div>userID: {todo.userId}</div>
     <div>id: {todo.id}</div>

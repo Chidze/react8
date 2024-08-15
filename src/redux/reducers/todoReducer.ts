@@ -19,7 +19,7 @@ export type TodoActionType = ReturnType<
     PropertiesTypes<typeof userActions>
     >
 
-const todoReducer = (state = initialState, action: TodoActionType) => {
+const todoReducer = (state = initialState, action: TodoActionType) : TodoInitialState => {
   switch(action.type){
     case UserActionType.SET_TODOS:
     return{

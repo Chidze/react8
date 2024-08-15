@@ -1,24 +1,22 @@
 import styles from './AlbumsComponent.module.css'
 import { useEffect } from 'react';
-import { getAlbumsThunk } from '../../redux/action/userAction';
 import { useDispatch, useSelector } from 'react-redux';
-import { Album } from '../../redux/reducers/albumReducer';
-import { AppDispatch, AppStateType } from '../../redux/store';
+import { AlbumRTK } from '../../redux/reduxTK/slices/albumSlice';
+import { AppDispatch, AppStateType } from '../../redux/reduxTK/store'; 
+import { getAlbumsThunkRTK } from '../../redux/reduxTK/slices/albumSlice';
 
 const AlbumsComponent = () => {
-    const albums: Album[] = useSelector( (store:AppStateType) => store.albumReducer.albums);
-    const dispatch: AppDispatch = useDispatch();
-    const getAlbums = () => dispatch(getAlbumsThunk())
- 
+    const albums = useSelector((store: AppStateType) => store.albumReducer.albums);
+    const dispatch = useDispatch<AppDispatch>();
  
     useEffect(() => {
-    getAlbums()
-}, []);
+        dispatch(getAlbumsThunkRTK());
+    }, [dispatch]);
 
 return(
     <div>
         <ol>  
-    {albums?.map((album) =>(
+    {albums?.map((album: AlbumRTK) =>(
     <li key={album.id} className={styles.box}>
     <div>userID: {album.userId}</div>
     <div>id: {album.id}</div>
